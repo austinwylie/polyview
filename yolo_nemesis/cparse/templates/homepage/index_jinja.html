@@ -1,0 +1,146 @@
+{% extends "/shared/base.html" %}
+
+{% block title %}PolyView{% endblock %}
+
+{% block homepage_content %}
+
+    <script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+    <div class="main" style="border-top-color: lightgrey; border-top-width: 1px; border-top-style: solid;">
+        <div class="container tim-container" style="padding-top:0px; background-color: white; z-index: 10 !important;">
+            <div class="row" style="margin-top: 28px;">
+                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-lg-offset-3 col-md-offset-2 col-sm-offset-1">
+                    <h1 class="text-center" style="font-size: 39px;">
+                        <small class="subtitle" style="font-family: 'Kite One', sans-serif; color: #606060;">It's time to say goodbye.
+                        </small>
+                    </h1>
+                    {#                    <h1 class="text-center" style="font-size: 30px; margin-top: -15px;">#}
+                    {#                        <small>Thanks for checking out PolyView.#}
+                    {#                        </small>#}
+                    {#                    </h1>#}
+                    <h1 class="text-center" style="font-size: 30px; margin-top: 15px;">
+                        <small>Hey Mustangs, thanks for using PolyView. It's been a grand adventure. We learned a lot.
+                        </small>
+                    </h1>
+
+                    <h1 class="text-center" style="font-size: 30px; margin-top: 20px;">
+                        <small>Unfortunately, for technical and logistical reasons, our data sources are becoming harder and harder to maintain. As much as we'd love to make this work,
+                            there just aren't enough resources to keep the site running.</small>
+                        <br>
+                    </h1>
+
+                    <h1 class="text-center" style="font-size: 30px; margin-top: 20px;">
+                        <small>It was great to hear all your excited feedback. Check out our Facebook page for any updates. We'll let you know if the situation ever changes. </small>
+                        <br>
+                    </h1>
+                </div>
+
+                {#                <p>We're evaluating the site's demand and staying power, so be sure to share your feedback and tell your friends about us.</p>#}
+                {#                <p>To get the latest updates, like us on Facebook:</p>#}
+            </div>
+            <div class="row" style="margin-top: 22px; margin-bottom: 100px;">
+                <div>
+                    <center>
+
+
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-page" data-href="https://www.facebook.com/PolyView.io" data-width="440"
+                             data-hide-cover="false" data-show-facepile="true" data-show-posts="false">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/PolyView.io"><a
+                                        href="https://www.facebook.com/PolyView.io">PolyView</a></blockquote>
+                            </div>
+                        </div>
+                </div>
+                {#                        <div class="fb-post" data-href="https://www.facebook.com/polyview.io/posts/337953993060730"#}
+                {#                             data-width="500">#}
+                {#                            <div class="fb-xfbml-parse-ignore">#}
+                {#                                <blockquote cite="https://www.facebook.com/polyview.io/posts/337953993060730"><p>Hey#}
+                {#                                    everyone, thanks for checking out PolyView. A note about our future:This began as a#}
+                {#                                    short-term class project, but...</p>Posted by <a#}
+                {#                                        href="https://www.facebook.com/polyview.io">PolyView</a> on <a#}
+                {#                                        href="https://www.facebook.com/polyview.io/posts/337953993060730">Sunday, April#}
+                {#                                    5, 2015</a></blockquote>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                </center>
+            </div>
+        </div>
+
+
+
+
+
+{#        <div class="row" style="margin-top: 120px; margin-bottom: 0px; padding-bottom: 20px;">#}
+{#            <div class="col-xs-12 text-center">#}
+{#                <h4 style="margin-bottom: 0px; font-size: 16px; margin-top: 0px; padding-top: 0px; color: #b5b5b5;">#}
+{#                    <small><em>Background image provided by <a#}
+{#                            href="https://flic.kr/p/5hcF7M" target="_blank">Kennedy#}
+{#                        Library</a>#}
+{#                        on Flickr under <a href="https://creativecommons.org/licenses/by-nc/2.0/"#}
+{#                                           target="_blank">Creative Commons</a></em>.#}
+{#                    </small>#}
+{##}
+{#                </h4>#}
+{#            </div>#}
+{#        </div>#}
+        {#    <center>#}
+        {#        <div class="fb-page" data-href="https://www.facebook.com/polyview.io" style="margin-bottom: 60px;"#}
+        {#             data-hide-cover="false"#}
+        {#             data-show-facepile="true" data-show-posts="false"></div>#}
+        {#    </center>#}
+
+
+        {#    <div class="row" style="margin-top: 64px; margin-bottom: 0px;">#}
+        {#        <div class="fb-like-box fb-like" style="margin-left: auto; margin-right: auto"#}
+        {#             data-href="https://www.facebook.com/PolyView.io" data-colorscheme="light"#}
+        {#             data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"#}
+        {#             style="border-bottom-width: 1px; border-color: lightgrey;"></div>#}
+        {##}
+        {#    </div>#}
+
+
+        {#    <div id="fine-tune" class="text-center"#}
+        {#         style="padding-top: 20px">#}
+        {#        <h5>Want to <a href="/advancedSearch">fine tune your#}
+        {#            search</a>?#}
+        {#        </h5>#}
+        {#    </div>#}
+
+        {#    <div class="text-center"#}
+        {#         style="padding-top: 50px; color: lightgrey;">#}
+        {#        <h4>#}
+        {#            You can find their official site at <a#}
+        {#                    href="http://calpoly.edu">calpoly.edu</a>.#}
+        {#        </h4>#}
+        {#    </div>#}
+
+
+        {#        <div>#}
+        {#            <h5>Course of the Day (TODO: make this responsive and not ugly)</h5>#}
+        {#            <h6>{{ rando.to_str() }}: {{ rando.title }}</h6>#}
+        {#            <p>{{ rando.description }}</p>#}
+        {#        </div>#}
+    </div>
+    </div>
+{% endblock %}
+
+
+

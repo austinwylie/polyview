@@ -1,0 +1,210 @@
+{% extends "shared/base.html" %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+    <div id="content" class="container"
+         style="margin-top: 0px; min-height: 75vh; margin-bottom: 35px;">
+    <script src="/static/assets/js/faq.js"></script>
+    <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1"
+             style="border-bottom-width: 2px; border-bottom-color: #F2F2F2; border-bottom-style: solid; padding-bottom:0px; margin-bottom: 5px;">
+            <h1>FAQ</h1>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div id="faq-content" class="col-xs-12 col-md-10 col-md-offset-1">
+            <div>
+                <a class="anchor" name="q1"></a>
+
+                <h3 style="margin-bottom: 13px;">What's PolyView?</h3>
+
+                <p>PolyView indexes Cal Poly's 2013-2015 Course
+                    Catalog. Current instructors (and their Polyratings) are also available for searching, and we've
+                    made it easy to find what you need on the campus map.</p>
+
+                <p>We aggregate this info and connect it in cool new ways. Use, say, <a href="/course/CPE/315/">CPE
+                    315</a> as an example. Click around and see where you end up.</p>
+
+                <p>Want to see your favorite professors' course schedules next quarter? Rushing to a room on the
+                    first
+                    day of class?
+                    Need to know what courses you can take <i>after</i> another course? We've got you covered.</p>
+
+            </div>
+
+            <div>
+                <a class="anchor" name="q2"></a>
+
+                <h3 style="margin-bottom: 13px;">What can I search for? How should I search?</h3>
+
+                <p>Quickstart guide!</p>
+
+                <ul>
+                    <li>Enter a <strong>subject</strong> to see its courses.
+                        <ul>
+                            <li>Try "English" or the course prefix
+                                "ENGL".
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Enter a <strong>building</strong> to get relevant maps.
+                        <ul>
+                            <li>"Building 47" will get you around the faculty offices Maze.
+                            </li>
+                            <li>A search like "math building" might be of help too.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Enter a <strong>course number</strong> or <strong>title</strong> to search for it.
+                        <ul>
+                            <li>Try "AG 243" or
+                                "rodeo".
+                            </li>
+                            <li>
+                                Remember a number but can't come up with the subject? You can do something like
+                                "101".
+                            </li>
+                        </ul>
+                    </li>
+                    <li>See <strong>GE areas</strong> and other <strong>degree requirements</strong>.
+                        <ul>
+                            <li>Search for a GE area like "GE A" or "GE B1".
+                            </li>
+                            {#                            <li>See GWR courses with "GWR" and USCP courses with "USCP"#}
+                            {#                                <ul>#}
+                            {#                                    <li>GWR courses fulfill the <a#}
+                            {#                                            href="http://writingcenter.calpoly.edu/content/gwr-approved-upper-division-courses">Graduation#}
+                            {#                                        Writing Requirement</a>.#}
+                            {#                                    </li>#}
+                            {#                                    <li>USCP courses fulfill the <a#}
+                            {#                                            href="http://www.catalog.calpoly.edu/academicstandardsandpolicies/generalrequirementsbachelorsdegree/#uscptext">United#}
+                            {#                                        States Cultural Pluralism</a> requirement.#}
+                            {#                                    </li>#}
+                            {#                                </ul>#}
+                            {#                            </li>#}
+
+                        </ul>
+                    </li>
+                    <li>Search <strong>instructor names</strong> to see their details.
+                        <ul>
+                            <li>Something like "John", "Doe", or "John Doe" should get you what you need.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <a class="anchor" name="q1"></a>
+
+                <h3 style="margin-bottom: 13px;">How up-to-date is PolyView?</h3>
+
+                <p>We retrieve new course schedules and Polyratings at the beginning of each quarter.</p>
+
+                <p>This should be fine for many cases, but please refer to <a
+                        href="http://pass.calpoly.edu/">PASS</a>
+                    to finalize your schedule.</p>
+            </div>
+
+
+            <div>
+                <a class="anchor" name="sources"></a>
+
+                <h3 style="margin-bottom: 13px;">Where's this data from?</h3>
+
+                <p>A few websites:</p>
+                <ul>
+                    <li><a href="http://schedules.calpoly.edu/"><strong>schedules.calpoly.edu</strong></a>
+                        <ul>
+                            <li>Course schedule</li>
+                            <li>Instructor contact details</li>
+                        </ul>
+                    </li>
+                    <li><a href="http://catalog.calpoly.edu/"><strong>catalog.calpoly.edu</strong></a>
+                        <ul>
+                            <li>Course descriptions</li>
+                        </ul>
+                    </li>
+                    <li><a href="http://maps.calpoly.edu/"><strong>maps.calpoly.edu</strong></a>
+                        <ul>
+                            <li>Campus map</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://afd.calpoly.edu/facilities/maps_floorplans.asp"><strong>afd.calpoly.edu</strong></a>
+                        <ul>
+                            <li>Building floorplans</li>
+                        </ul>
+                    </li>
+                    <li><a href="http://polyratings.com/"><strong>polyratings.com</strong></a>
+                        <ul>
+                            <li>Polyratings reviews</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p>Note that PolyView doesn't generate any content. Concerns about course or instructor data or the
+                    campus
+                    map should
+                    be directed to Cal Poly. Concerns about instructor ratings should be directed to
+                    Polyratings.</p>
+
+                <p>If their data looks right but we didn't display something correctly, you can report a problem for
+                    instructor Polyratings (see the next question) or send us an email if something else is bugging
+                    you
+                    (see the last question).</p>
+            </div>
+
+            <div>
+                <a class="anchor" name="q4"></a>
+
+                <h3 style="margin-bottom: 13px;">An instructor's Polyratings are missing or for a different
+                    person.</h3>
+
+                <p>Sorry, names are tricky.</p>
+
+                <p>The likely culprit is a typo on Polyratings or use of an obscure nickname. It's also possible
+                    that an
+                    instructor has not yet been rated. If something looks off and we should have different ratings,
+                    click the 'Report
+                    a Problem' button. We'll use
+                    that info to improve our matching algorithms.</p>
+
+                <p>It's also worth noting that this shouldn't be an issue between instructors and <i>courses</i>. We
+                    use
+                    their
+                    email for that.</p>
+            </div>
+
+
+            <div>
+                <a class="anchor" name="q4"></a>
+
+                <h3 style="margin-bottom: 13px;">Who's making this site?</h3>
+
+                <p>We're some computer science students (Classes of 2014 and 2015) that wanted to build a cool class
+                    project.
+                    We hope you like it.</p>
+
+                <p>The more important question, though, is who will your <a href="/instructor/"><i>teachers</i></a>
+                    be?
+                </p>
+            </div>
+
+            <div>
+                <a class="anchor" name="q4"></a>
+
+                <h3 style="margin-bottom: 13px;">I have another question or need to tell you something!</h3>
+
+                <p>We may not be able to respond to all messages, but we'll check emails at contact@polyview.io.</p>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+{% endblock %}

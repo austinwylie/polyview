@@ -1,0 +1,27 @@
+<tr>
+    <td class="polyrating-side" style="width:18%;">
+    <p>
+            {% if rating.course %}
+                <strong><a class="polyCourse"
+                        href="/course/{{ rating.course.subject.code }}/{{ rating.course.number }}/">{{ rating.course }}</a></strong>
+                <br>
+            {% else %}
+                <strong>Unknown course</strong> <br>
+            {% endif %}
+
+            {{ rating.date }}<br>
+            {{ get_standing(rating.standing) }} <br>
+            Reported grade: {{ get_grade(rating.grade) }}
+
+        </p>
+
+        <p>
+            <small>Rating for <strong>{{ rating.instructor.full_name }}</strong>
+            </small>
+        </p>
+
+    </td>
+    <td class="polyrating-content">
+        <p>{{ rating.comments }}</p>
+    </td>
+</tr>

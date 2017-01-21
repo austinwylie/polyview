@@ -1,0 +1,25 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ building.name }}{% endblock %}
+
+{% block content %}
+    <div id="content" class="container"
+         style="margin-top: 0px; min-height: 75vh; margin-bottom: 35px;">
+        <h1>Building {{ building.code }}
+            <small>{{ building.name }}</small>
+        </h1>
+        <h4>Maps and Directions</h4>
+        {% if building.floorplan_alias %}
+            <p>See the <a
+                    href={{ building.floorplan_alias|urlencode|replace("%3A", ":")|replace("%25", "%") }} target="_blank"><strong>floor
+                plan</strong> (PDF)</a></p>
+        {% endif %}
+        <p>Jump to {{ building.code.lstrip('0') }} on the <a
+                href="http://maps.calpoly.edu/flashmap/map.html?vlist={{ building.building_code() }}-0"
+                target="_blank"><strong>campus map</strong> (Flash)</a></p>
+
+        <p>View a <a
+                href="http://afd.calpoly.edu/facilities/mapsplans/map/cpsimplemap.pdf"
+                target="_blank"><strong>campus map</strong> (PDF)</a></p>
+    </div>
+{% endblock %}

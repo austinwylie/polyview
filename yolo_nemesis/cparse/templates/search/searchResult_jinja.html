@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+
+    <div class="panel-heading" data-toggle="collapse"
+         data-parent="#accordion"
+         data-target="#collapse{{ forloop.counter }}">
+
+    <h4 class="panel-title">
+
+            <a class="accordian-toggle">
+                {% block header %}{% endblock %}
+            </a>
+
+        </h4>
+
+    </div>
+
+    <div id="collapse{{ forloop.counter }}" class="panel-collapse collapse">
+
+        <div class="panel-body">
+
+            {% block body %} {% endblock %}
+
+        </div>
+
+    </div>
+</div>

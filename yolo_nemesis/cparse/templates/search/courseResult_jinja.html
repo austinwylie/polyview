@@ -1,0 +1,72 @@
+{% extends "search/searchResult_jinja.html" %}
+
+{% block header %}
+    <div class="row vertical-align">
+        <div class="col-xs-12 col-sm-3 col-lg-2">
+            <strong>{{ result.subject.code }} {{ result.number }}</strong>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-lg-8">
+            {{ result.title }}
+        </div>
+        <div class="col-xs-12 col-sm-2 col-lg-2 units-col" style="">
+
+        {% if result.credit_no_credit == 1 %}
+                <span class="label label-default label-fill pull-right">CR/NC</span>
+            {% elif result.min_units == result.max_units and result.min_units == 1 %}
+                <span class="label label-default label-fill pull-right">{{ result.min_units }} unit</span>
+            {% elif result.min_units == result.max_units %}
+                <span class="label label-default label-fill pull-right">{{ result.min_units }} units</span>
+            {% else %}
+                <span class="label label-default label-fill pull-right">{{ result.min_units }} - {{ result.max_units }} units</span>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xs-12 col-md-7">
+
+            <strong>Description:</strong> {{ result.description }}
+            {#        </div>#}
+        </div>
+        <div class="col-xs-12 col-md-5">
+
+
+            {% for req in split_reqs(result.requisites) %}
+                {{ req | safe }}<br>
+            {% endfor %}
+        </div>
+        {#        <div class="row" style="padding-right: 20px">#}
+
+
+    </div>
+    <div class="row" style="margin-top: 9px">
+        <div class="col-xs-12">
+
+
+            {% for ge in result.ge_areas.all().order_by('letter', 'number') %}
+                <span class="label label-default pull-left fulfill">GE {{ ge }}</span>
+            {% endfor %}
+
+            {% if result.gwr %}
+                <span class="label label-default pull-left fulfill">GWR</span>
+            {% endif %}
+
+            {% if result.uscp %}
+                <span class="label label-default pull-left fulfill">USCP</span>
+            {% endif %}
+
+            <a href="/course/{{ result.subject.code }}/{{ result.number }}">
+                <button type="submit"
+                        id="detail-button"
+                        class="btn btn-info btn-xs btn-fill pull-right">
+                    View more details
+                </button>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends "search/searchResult_jinja.html" %}
+
+{% block header %}
+    {{ result.first }} <strong>{{ result.last }}</strong>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-3">
+        {{ result.phone }}
+            <br>{{ result.location }}
+            <br>{{ result.alias }}@calpoly.edu
+        </div>
+        <div class="col-xs-6">
+            {#            more here#}
+        </div>
+        <div class="col-xs-3">
+            <a href="/instructor/{{ result.alias }}">
+                <button type="submit"
+                        class="btn btn-info btn-xs btn-fill pull-right"
+                        style="margin-right: 10px">
+                    View more details
+                </button>
+            </a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,158 @@
+{% extends "shared/base.html" %}
+
+{% block title %}Course Filter{% endblock %}
+
+{% block content %}
+    <div id="content" class="container"
+         style="margin-top: 0px; min-height: 75vh; margin-bottom: 35px;">
+        <h1 style="border-bottom-width: 2px; border-bottom-color: #F2F2F2; border-bottom-style: solid; padding-bottom:12px; margin-bottom: 27px;">
+            Course Filter</h1>
+
+        <p style="margin-bottom: 20px;">Look up courses matching all of the below rules. If you don't get any results,
+            your search parameters may be too broad or too narrow. Please also be patient for filters to run, as there
+            are a lot of courses to search.</p>
+
+        <div class="col">
+            <form id="advSearch" class="form-horizontal" action="/advsearch/" method="get">
+
+
+                <div class="form-group form-inline">
+                    <label for="keywords" class="control-label col-xs-12 col-sm-2 col-md-2" style="margin-top: 5px;">Keywords</label>
+
+                    <div class="col-xs-12 col-sm-10 col-md-4" style="margin-top: 5px; margin-bottom: 3px;">
+                        <input type="text" id="keywords" class="form-control" autofocus="autofocus"
+                               spellcheck="false" placeholder="None" name="keywords">
+                    </div>
+
+                    <label for="instructor" class="control-label col-xs-12 col-sm-2 col-md-2" style="margin-top: 7px;">Instructor</label>
+
+                    <div class="col-xs-12 col-sm-10 col-md-4" style="margin-top: 7px;">
+                        <select id="instructor" class="form-control" name="instructor">
+                            {% for instructor in instructors %}
+                                <option>{{ instructor }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline">
+                    <label for="subject" class="control-label col-xs-12 col-sm-2 col-md-2">Subject</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="subject" class="form-control" name="subject">
+                            {% for subject in subjects %}
+                                <option>{{ subject }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <label for="geArea" class="control-label col-xs-12 col-sm-2 col-md-2">GE Area</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="geArea" class="form-control" name="geArea">
+                            {% for ge in geareas %}
+                                <option>{{ ge }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group form-inline">
+                    <label for="nextQuarter" class="control-label col-xs-12 col-sm-2 col-md-2">Offered Fall
+                        '15</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="nextQuarter" name="nextQuarter" class="form-control">
+                            <option>No preference</option>
+                            <option>Yes</option>
+                            {#                            <option>No</option>#}
+                        </select>
+                    </div>
+
+                    <label for="futureQuarter" class="control-label col-xs-12 col-sm-2 col-md-2">Offered Winter
+                        '16</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="futureQuarter" name="futureQuarter" class="form-control">
+                            <option>No preference</option>
+                            <option>Yes</option>
+                            {#                            <option>No</option>#}
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group form-inline">
+                    <label for="gwr" class="control-label col-xs-12 col-sm-2 col-md-2">GWR</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="gwr" name="gwr" class="form-control">
+                            <option>No preference</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
+
+                    <label for="uscp" class="control-label col-xs-12 col-sm-2 col-md-2">USCP</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="uscp" name="uscp" class="form-control">
+                            <option>No preference</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group form-inline">
+
+
+                    <label for="minUnits" class="control-label col-xs-12 col-sm-2 col-md-2">Min units</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <input type="number" min="0" max="12" id="minUnits" name="minUnits" class="form-control"
+                               placeholder="0"
+                               spellcheck="false">
+                    </div>
+
+                    <label for="maxUnits" class="control-label col-xs-12 col-sm-2 col-md-2">Max units</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <input type="number" min="0" max="12" id="maxUnits" name="maxUnits" class="form-control"
+                               placeholder="12"
+                               spellcheck="false">
+                    </div>
+
+
+                </div>
+
+                <div class="form-group form-inline">
+
+                    <label for="cr/nc" class="control-label col-xs-12 col-sm-2 col-md-2">Credit/No Credit</label>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <select id="cr/nc" class="form-control" name="crnc">
+                            <option>No preference</option>
+                            <option>Yes</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class="form-group form-inline">
+                    <input type="reset" class="btn-round btn btn-default btn-sm pull-right" value="Reset Fields">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+                    <div class="form-group">
+                        <button type="submit" id="adv-search-submit"
+                                class="btn btn-info btn-fill btn-lg btn-block btn-round"
+                                style="margin-top: 0px">Run Filter
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

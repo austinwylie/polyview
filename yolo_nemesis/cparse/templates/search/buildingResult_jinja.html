@@ -1,0 +1,27 @@
+{% extends "search/searchResult_jinja.html" %}
+
+{% block header %}
+    <strong>{{ result.code }}</strong> {{ result.name }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-6">
+            <strong>{{ result.code }}</strong>
+            <br>{{ result }}
+        </div>
+        <div class="col-xs-6">
+        <a href="/building/{{ result.code }}">
+                <button type="submit"
+                        class="btn btn-info btn-xs btn-fill pull-right"
+                        style="margin-right: 10px">
+                    View more details
+                </button>
+            </a>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+

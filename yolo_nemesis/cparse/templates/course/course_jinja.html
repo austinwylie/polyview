@@ -1,0 +1,181 @@
+{% extends "shared/twoColumnPage.html" %}
+
+{% block title %}{{ course.subject.code }} {{ course.number }}{% endblock %}
+
+{% block header %}
+
+
+    <div class="row" style="display: table; width:100%">
+        <div class="col-xs-12 col-sm-8 col-md-10">
+            <h1 style="margin-bottom: 0px">{{ course.subject.code }} {{ course.number }}
+            </h1>
+
+            <p id="course-title">{{ course.title }}</p>
+        </div>
+        <div class="requirement col-xs-12 col-sm-4 col-md-2" style="margin-top: 35px; max-width: 200px;">
+
+
+            {% for ge in course.ge_areas.all().order_by('letter', 'number') %}
+                <span class="label label-default fulfill-on-page pull-right">GE {{ ge }}</span>
+            {% endfor %}
+
+            {% if course.gwr %}
+                <span class="label label-default fulfill-on-page pull-right">GWR</span>
+            {% endif %}
+
+            {% if course.uscp %}
+                <span class="label label-default fulfill-on-page pull-right">USCP</span>
+            {% endif %}
+
+            {% if course.credit_no_credit == 1 %}
+                <span class="label label-default label-fill fulfill-on-page pull-right"
+                      style="margin-left: 0px;">CR/NC</span>
+            {% elif course.min_units == course.max_units and course.min_units == 1 %}
+                <span class="label label-default label-fill fulfill-on-page pull-right"
+                      style="margin-left: 0px">{{ course.min_units }} unit</span>
+            {% elif course.min_units == course.max_units %}
+                <span class="label label-default label-fill fulfill-on-page pull-right"
+                      style="margin-left: 0px">{{ course.min_units }} units</span>
+            {% else %}
+                <span class="label label-default label-fill fulfill-on-page pull-right"
+                      style="margin-left: 0px">{{ course.min_units }} - {{ course.max_units }} units</span>
+            {% endif %}
+        </div>
+    </div>
+    {% if course.crosslistings.all().count() > 0 %}
+        <div class="row">
+            <div class="col-xs-12 text-center"
+                 style="border-top-width: 2px; border-top-color: #F2F2F2; border-top-style: solid; padding-bottom: 15px; margin-top: 15px; padding-top: 10px; margin-bottom: -30px;">
+                <p style="color:#808080;">This course is crosslisted
+                    with {{ humanize_list(course.crosslistings.all()) }}.
+                    Don't worry! All the info is synced.</p>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+{#  Column for static data  #}
+{% block leftCol %}
+
+
+
+    <h4>Description
+
+    </h4>
+
+
+    <p>{{ course.description }}</p>
+
+    {#    <h4>Stats</h4>#}
+    {#        TODO: add real stats here#}
+    {#    {% for key, val in stats.items() %}#}
+    {#        <p>#}
+    {#            {{ key }}: <strong>{{ val }}</strong>#}
+    {#        </p>#}
+    {#    {% endfor %}#}
+
+    <h4>Stats</h4>
+{#    {% if enrolled(course) != -1 %}#}
+{##}
+{#        <p>This course is at <strong>{{ enrolled(course)|round|int }}%</strong> capacity.</p>#}
+{#    {% else %}#}
+{#        <p>Unknown course capacity.</p>#}
+{#    {% endif %}#}
+    <p>Average grade on Polyratings: <strong>{{ grade(course) }}</strong></p>
+
+{% endblock %}
+
+{% block rightCol %}
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h4>Course Preparation</h4>
+            {% if course.prerequisites_description or course.corequisites_description or course.concurrent_description or course.recommended_description %}
+                {% if course.prerequisites_description %}
+                    <label>Prerequisites</label>
+                    <br>
+                    <p>{{ course.prerequisites_description }}</p>
+                {% endif %}
+
+                {% if course.concurrent_description %}
+                    <label>Concurrent</label>
+                    <br>
+
+                    <p>{{ course.concurrent_description }}</p>
+                {% endif %}
+
+
+                {% if course.corequisites_description %}
+                    <label>Corequisites</label><br>
+
+                    <p>{{ course.corequisites_description }}</p>
+                {% endif %}
+
+
+                {% if course.recommended_description %}
+                    <label>Recommended</label><br>
+                    <p>{{ course.recommended_description }}</p>
+                {% endif %}
+
+                {% if prereq_links|length > 0 %}
+                    <label>Related links</label><br>
+                    <p>
+                        {% for req in prereq_links %}
+                            <a href="/course/{{ req.major | safe }}/{{ req.number | safe }}">{{ req.major | safe }} {{ req.number | safe }}</a>
+                            <br>
+
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            {% else %}
+                <p><em>No known requirements</em></p>
+            {% endif %}
+            {% if course.prerequisites_set.all()|length > 0 or course.corequisites_set.all()|length > 0 or course.recommended_set.all()|length > 0 %}
+                <h4>Supplementary Courses</h4>
+                {% if course.prerequisites_set.all()|length >= 1 %}
+                    <p>{{ course.subject.code }} {{ course.number }} may be a
+                        <strong>prerequisite</strong>
+                        for the following:<br>
+
+                        {{ humanize_prerequisites(course)|safe }}
+                    </p>
+                {% endif %}
+                {% if course.corequisites_set.all()|length >= 1 %}
+                    <p>{{ course.subject.code }} {{ course.number }} may be a
+                        <strong>corequisite</strong>
+                        for the following:<br>
+
+                        {{ humanize_corequisites(course)|safe }}
+                    </p>
+                {% endif %}
+                {% if course.recommended_set.all()|length >= 1 %}
+                    <p>{{ course.subject.code }} {{ course.number }} is
+                        <strong>recommended</strong>
+                        before the following:<br>
+
+                        {{ humanize_recommended(course)|safe }}
+                    </p>
+                {% endif %}
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{#  Column for offered in coming quarters  #}
+{% block bottom %}
+    <h4>Offered Sections</h4>
+    {% for q in ["Winter 2016", "Spring 2016"] %}
+        {% with quarter=q, sections=offered(course=course, quarter=q) %}
+            {% include "shared/sections_jinja.html" %}
+        {% endwith %}
+    {% endfor %}
+{% endblock %}

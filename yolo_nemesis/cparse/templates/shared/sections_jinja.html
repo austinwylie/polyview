@@ -1,0 +1,73 @@
+{% if sections|length > 0 %}
+    <h5>{{ quarter }}</h5>
+    <table class="table section-table" style="width:100%">
+        <tr>
+            {% if instructor %}
+
+                <th>Course</th>
+                <th>Section</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Location</th>
+
+            {% else %}
+
+                <th>Section</th>
+                <th>Instructor</th>
+                <th>Days</th>
+                <th>Time</th>
+                <th>Location</th>
+
+            {% endif %}
+
+        </tr>
+
+        {% for section in sections %}
+            {% if section and (section.instructor or section.location) %}
+
+                <tr>
+                    {% if instructor %}
+                        <td>
+                        {% if section.course %}
+                            <a href="/course/{{ section.course.subject.code }}/{{ section.course.number }}"> {{ section.course }}</a>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                        </td>
+                        <td class="section">{{ section.number }}
+                            - {{ section.activity_type }}</td>
+                        <td>{{ section.days }}</td>
+                        <td>{{ section.time_string() }}</td>
+                        <td>{{ section.location_link() }}</td>
+
+                    {% else %}
+
+                        <td class="section">{{ section.number }}
+                            - {{ section.activity_type }}</td>
+
+                        <td>
+                            {% if section.instructor %}
+                                <a href="/instructor/{{ section.instructor.alias }}"> {{ section.instructor }} </a>
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if section.days %}
+                                {{ section.days }}
+                            {% endif %}
+                        </td>
+                        <td>{{ section.time_string() }}</td>
+                        <td>{{ section.location_link() }}</td>
+
+
+                    {% endif %}
+
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% else %}
+    <p><em>None for {{ quarter }}</em></p>
+{% endif %}

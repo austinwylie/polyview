@@ -1,0 +1,153 @@
+<div id="navbar">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+        <div class="container-fluid" style="display:inline">
+            <div class="navbar-header">
+
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+
+                    <span class="sr-only">Toggle navigation</span>
+
+                    <span class="icon-bar"></span>
+
+                    <span class="icon-bar"></span>
+
+                    {#                    <span class="icon-bar"></span>#}
+
+                    <span class="icon-bar"></span>
+
+                </button>
+
+                <a class="navbar-brand" href="/">
+                    <img class="navbar-image" src="/static/assets/img/Cal_Poly_io_Small2.png">
+                </a>
+
+                {#              This keeps the search in the navbar when menu is collapsed in mobile view#}
+                <div class="visible-xs">
+                    {% if not hide_search_in_navbar %}
+                        {% with margin_top = 15 %}
+                            {% include "/shared/navbar-search.html" %}
+                        {% endwith %}
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/course/">Courses</a></li>
+
+                    <li><a href="/instructor/">Instructors</a></li>
+
+                    <li><a href="/building/">Buildings</a></li>
+
+                    <li><a href="/filter/">Filter</a></li>
+
+                    <li><a href="/faq/">FAQ</a></li>
+
+                </ul>
+
+                {#              This keeps search in the navbar for non-mobile views#}
+                <div class="hidden-xs">
+                    {% if not hide_search_in_navbar %}
+                        {% with margin_top = 26 %}
+                            {% include "/shared/navbar-search.html" %}
+                        {% endwith %}
+                    {% endif %}
+                </div>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+
+
+    </nav>
+    {% if homepage %}
+        <div class="blurred-container">
+            <div class="img-src"
+                 style="width: 100%; background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.61),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url('/static/assets/img/back2.jpg');">
+            <div class="row">
+                    <div class="col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+                    <img class="displayed img-responsive"
+                             style="margin-top: 80px; margin-bottom: -20px; width: 75%;"
+                             src="static/assets/img/newlogoapril.png">
+                    </div>
+
+                </div>
+
+
+                {#    <div class="row">#}
+                {#        <div class="col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 front-pic darken">#}
+                {##}
+                {#        </div>#}
+                {##}
+                {#    </div>#}
+
+
+                <div class="row text-center white-front" style="margin-top: -10px;">
+                    <h1>
+                        <small class="subtitle" style="font-size: 42px; ">See what's next.</small>
+                    </h1>
+                </div>
+
+{#                <form role="form" action="/search/">#}
+{#                    <div class="row" style="margin-top: 16px;">#}
+{#                        <div class="form-group">#}
+{#                            <div class="col-xs-12 col-sm-6 col-sm-offset-2 col-xs-offset-0 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2"#}
+{#                                 style="margin-bottom: 10px;">#}
+{#                                <input type="text" id="omnibox"#}
+{#                                       style="width: 97%; margin-left: auto; margin-right: auto; z-index: 2001;"#}
+{#                                       autofocus="autofocus"#}
+{#                                       class="form-control input-lg"#}
+{#                                       name="query" spellcheck="false" autocorrect="off"#}
+{#                                       autocapitalize="off"#}
+{#                                       placeholder=" Search...">#}
+{#                            </div>#}
+{#                            <div class="col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-0 col-md-2 col-lg-2">#}
+{#                                <form action="../search/search.html">#}
+{#                                    <button type="submit" style="width:100%;"#}
+{#                                            class="btn btn-info btn-fill btn-lg"><i class="fa fa-search"#}
+{#                                                                                    style="color: white;"></i>#}
+{#                                    </button>#}
+{#                                </form>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </form>#}
+
+{#                <div class="row text-center white-front" style="margin-top: -0px; color: #ffffff;">#}
+{#                    <div class="col-xs-12 hidden-xs col-sm-10 col-sm-offset-1 text-center">#}
+{#                        <h2 style="font-size: 36px; line-height: 80%; max-width: 100%;">#}
+{#                        <small>Look up Cal Poly's <strong>courses</strong>, <strong>instructors</strong>, and#}
+{#                                <strong>buildings</strong>.#}
+{#                                The info you need, quicker.#}
+{#                            </small>#}
+{#                        </h2>#}
+{#                    </div>#}
+{#                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg col-sm-10 col-sm-offset-1 text-center">#}
+{#                        <h2 style="font-size: 24px; line-height: 75%; max-width: 100%;">#}
+{#                        <small>Look up Cal Poly's <strong>courses</strong>, <strong>instructors</strong>, and#}
+{#                                <strong>buildings</strong>.#}
+{#                                The info you need, quicker.#}
+{#                            </small>#}
+{#                        </h2>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+<!--  end navbar -->
